@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use App\User;
 
 class ProjectController extends Controller
 {
@@ -14,7 +15,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $items = User::latest('updated_at')->get();
+
+        return view('admin.projects.index', compact('items'));
     }
 
     /**
