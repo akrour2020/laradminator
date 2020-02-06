@@ -22,7 +22,7 @@
 <li class="nav-item">
     <a class="sidebar-link {{ Str::startsWith($route, ADMIN . '.projects') ? 'active' : '' }}" href="{{ route(ADMIN . '.projects.index') }}">
         <span class="icon-holder">
-            <i class="c-brown-500 ti-user"></i>
+            <i class="c-brown-500 ti-folder"></i>
         </span>
         <span class="title">Projects</span>
     </a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -15,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $items = User::latest('updated_at')->get();
+        $items = Project::latest('updated_at')->get();
 
         return view('admin.projects.index', compact('items'));
     }
@@ -27,7 +28,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -38,7 +39,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, Project::rules());
+
+        Project::create($request->all());
+
+        return back()->withSuccess(trans('app.success_store'));
     }
 
     /**
