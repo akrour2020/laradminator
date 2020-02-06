@@ -11,6 +11,8 @@ Auth::routes();
 Route::group(['prefix' => ADMIN, 'as' => ADMIN . '.', 'middleware'=>['auth', 'Role:10']], function () {
     Route::get('/', 'DashboardController@index')->name('dash');
     Route::resource('users', 'UserController');
+    Route::get('projects', 'ProjectController@index')->name('projects.index');
+    Route::resource('users', 'ProjectController');
 });
 
 Route::get('/', function () {
